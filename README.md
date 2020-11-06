@@ -1,2 +1,2 @@
 # DS-Algo
-DS and algo implementation in java.
+DS-Algo implementation using java.
