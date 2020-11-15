@@ -1,15 +1,14 @@
 package priorityQueue;
 
-public class MinHeap {
+public class MaxHeap {
 	private int[] Heap;
 	private int size;
 	private int maxsize;
-	private static final int FRONT=1;
-	public MinHeap(int maxsize){
+	public MaxHeap(int maxsize){
 		this.maxsize=maxsize;
 		this.size=0;
 		Heap=new int[this.maxsize+1];
-		Heap[0]=Integer.MIN_VALUE;
+		Heap[0]=Integer.MAX_VALUE;
 	}
 	private int parent(int pos) {
 		return pos/2;
@@ -31,27 +30,20 @@ public class MinHeap {
 		Heap[fpos]=Heap[spos];
 		Heap[spos]=tmp;
 	}
-	private void minHeapify(int pos) {
-		if(!isLeaf(pos)) {
-		if(Heap[pos]>Heap[leftChild(pos)]||Heap[pos]>Heap[rightChild(pos)]) {
-			if(Heap[leftChild(pos)]<Heap[rightChild(pos)]) {
+	private void maxHeapify(int pos) {
+		if(isLeaf(pos))return;
+		if(Heap[pos]<Heap[leftChild(pos)]||Heap[pos]<Heap[rightChild(pos)]) {
 			swap(pos,leftChild(pos));
-			minHeapify(leftChild(pos));
+			maxHeapify(leftChild(pos));
 		}else {
 			swap(pos,rightChild(pos));
-			minHeapify(rightChild(pos));
-		}
+			maxHeapify(rightChild(pos));
 		}
 	}
-}
 	public void insert(int element) {
-		if(size>=maxsize) {
-			return;
-		}
-	
 		Heap[++size]=element;
 		int current=size;
-		while(Heap[current]<Heap[parent(current)]) {
+		while(Heap[current]>Heap[parent(current)]) {
 			swap(current,parent(current));
 			current=parent(current);
 		}
@@ -63,32 +55,26 @@ public class MinHeap {
 		}
 		
 	}
-	public void minHeap(){
-		for(int pos=size/2;pos>=1;pos--) {
-			minHeapify(pos);
-		}
-	}
-	public int remove() {
-		int popped =Heap[FRONT];
-		Heap[FRONT]=Heap[size--];
-		minHeapify(FRONT);
+	public int extractMax(){
+		int popped=Heap[1];
+		Heap[1]=Heap[size--];
+		maxHeapify(1);
 		return popped;
-		}
-
+	}
 	public static void main(String[] args) {
-		System.out.println("The Mix Heap is");
-		MinHeap minHeap=new MinHeap(15);
-		minHeap.insert(5);
-		minHeap.insert(3);
-		minHeap.insert(17);
-		minHeap.insert(10);
-		minHeap.insert(84);
-		minHeap.insert(19);
-		minHeap.insert(6);
-		minHeap.insert(22);
-		minHeap.minHeap();
-		minHeap.print();
-		System.out.println(minHeap.remove());
+		System.out.println("The Max Heap is");
+		MaxHeap maxHeap=new MaxHeap(15);
+		maxHeap.insert(5);
+		maxHeap.insert(3);
+		maxHeap.insert(17);
+		maxHeap.insert(10);
+		maxHeap.insert(84);
+		maxHeap.insert(19);
+		maxHeap.insert(6);
+		maxHeap.insert(22);
+		maxHeap.print();
+		System.out.println(maxHeap.extractMax());
+		
 		// TODO Auto-generated method stub
 
 	}
