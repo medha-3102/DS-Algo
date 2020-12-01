@@ -1,6 +1,6 @@
 package twoPointer; 
 
-	class countzot { 
+	class Countzot { 
 
 		// Sort the input array, the array is assumed to 
 		// have values in {0, 1, 2} 
