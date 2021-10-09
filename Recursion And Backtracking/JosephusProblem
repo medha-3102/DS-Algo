@@ -10,7 +10,6 @@ public class JosephusProblem {
 		int k = sc.nextInt();
 		System.out.println(jos(n,k));
 		// TODO Auto-generated method stub
-
 	}
 	static int jos(int n,int k) {
 		if(n==1)
