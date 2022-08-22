@@ -2,7 +2,7 @@ package arrays;
 
 import java.util.Scanner;
 
-public class NextPermutation {
+public class NextPermutation {	//Time = O(n) Space = O(1)
 
 	public static void main(String[] args) {
 		Scanner sc= new Scanner(System.in);
