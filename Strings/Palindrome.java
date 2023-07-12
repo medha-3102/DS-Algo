@@ -3,15 +3,20 @@ package strings;
 public class Palindrome {
 
 	public static void main(String[] args) {
-		String s="WOW";
-		String r="";
-		for(int i=s.length()-1;i>=0;i--)
-			r=r+s.charAt(i);
-		if(s.equals(r))
-			System.out.println("Yes");
-		else
-			System.out.println("No");
+		String s = "GEEKSFORGEEKS";
+		boolean b=true;
+		int l=0,h=s.length()-1;
+		while(l<h) {
+			if(s.charAt(l)!=s.charAt(h))
+				b=false;
+			l++;h--;
+			
+		}
+		System.out.print(b);//O(N) & O(1)
+		
+		
 		// TODO Auto-generated method stub
 
 	}
+
 }
