@@ -1,38 +1,51 @@
 package arrays;
 
-import java.util.Scanner;
-
-public class NextPermutation {	//Time = O(n) Space = O(1)
+public class NextPermutation {
 
 	public static void main(String[] args) {
-		Scanner sc= new Scanner(System.in);
-		int n = sc.nextInt();
-		int a[]= new int[n];
-		for(int i=0;i<n;i++)
-			a[i]=sc.nextInt();
-		func(a);
-		// TODO Auto-generated method stub
-	}
-	static void func(int a[]) {
-		if(a==null || a.length<=1) return;
-		int i= a.length-2;
-		while(i>=0&& a[i]>=a[i+1]) i--;
-		if(i>=0) {
-			int j=a.length-1;
-			while(a[j]<=a[i]) j--;
-			swap(a,i,j);
+		int a[]  =  {1,2,3,4,5,7,6};
+		int n= a.length;
+		int j=-1;boolean b=true;
+		
+		for(int i=1;i<a.length;i++) {
+			if(a[i-1]!=i) {
+				b=false;
+				break;
+			}
 		}
-		reverse(a,i+1,a.length-1);
-		for(int x:a)
-		System.out.print(x+" ");
-	}
-	static void swap(int a[],int i,int j) {
-		int temp = a[i];
-		a[i] = a[j];
-		a[j] = temp;
-	}
-	static void reverse(int a[],int i,int j) {
-		while(i<j) swap(a,i++,j--);
+		
+		if(!b) {
+		for(int i=n-1;i>0;i--) {
+			
+			if(a[i]>a[i-1] ) {
+				j=i-1;
+				break;
+			}
+				
+		}
+		
+		}
+		if(j>=0) {
+	for(int i=n-1;i>j;i--) {
+			
+			if(a[i]>a[j]) {
+				a[i]  = a[i]^a[j];
+				a[j]  = a[i]^a[j];
+				a[i]  = a[i]^a[j];
+				break;
+		}
+		
+		}
+		}
+		for(int i=0;i<=j;i++) {
+			System.out.print(a[i]+" ");
+		}
+		for(int i=n-1;i>j;i--) {
+			System.out.print(a[i]+" ");
+		}
+		
+		// TODO Auto-generated method stub
+
 	}
 
 }
