@@ -13,9 +13,6 @@ public class Palindrome {
 			
 		}
 		System.out.print(b);//O(N) & O(1)
-		
-		
-		// TODO Auto-generated method stub
 
 	}
 
